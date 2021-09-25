@@ -13,18 +13,17 @@
              $numer = $_GET['Numer'];
 $query = "Insert into uczen(Imie, Nazwisko, Numer) values('$imie', '$nazwisko', '$numer')";
 $query1 = "SELECT * FROM uczen";
-$run =mysqli_query($con,$query) or die(mysqli_error());
-$run2 =mysqli_query($con,$query1) or die(mysqli_error());
+$jazda =mysqli_query($con,$query) or die(mysqli_error());
+$jazda2 =mysqli_query($con,$query1) or die(mysqli_error());
 
-if($run){
+if($jazda){
     echo "Formularz zatwierdzony";
 }
 else{
     echo "formularz jest błędny";
 }
          
-
-if($run2){
+if($jazda2){
     echo "<p>";
     echo "<table border=\"1\"<tr>";
     echo "<td><strong>ID</strong></td>";
@@ -33,7 +32,7 @@ if($run2){
     echo "<td><strong>Numer</strong></td>";
     echo "</tr>";
 
-    while($row=mysqli_fetch_row($run2))
+    while($row=mysqli_fetch_row($jazda2))
     {
         echo "</tr>";
         echo "<td bgcolor=\"gray\">" . $row[0] . "</td>";
@@ -42,24 +41,21 @@ if($run2){
         echo "<td bgcolor=\"gray\">" . $row[3] . "</td>";
         echo "</tr>";
     }
-
     echo "</table>";
-    
 }
 else{
     echo "formularz jest błędny";
 }
 }
-
 if(isset($_GET['delnumer']))
 		 {
              $delnum = $_GET['delnum'];
 
 $query2 = "DELETE FROM uczen WHERE id = $denum";
 $query1 = "SELECT * FROM uczen";
-$run2 =mysqli_query($con,$query2) or die(mysqli_error());
+$jazda2 =mysqli_query($con,$query2) or die(mysqli_error());
 
-if($run2){
+if($jazda2){
     echo "<p>";
     echo "<table border=\"1\"<tr>";
     echo "<td><strong>ID</strong></td>";
@@ -68,7 +64,7 @@ if($run2){
     echo "<td><strong>Numer</strong></td>";
     echo "</tr>";
 
-    while($row=mysqli_fetch_row($run2))
+    while($row=mysqli_fetch_row($jazda2))
     {
         echo "</tr>";
         echo "<td bgcolor=\"gray\">" . $row[0] . "</td>";
@@ -77,16 +73,11 @@ if($run2){
         echo "<td bgcolor=\"gray\">" . $row[3] . "</td>";
         echo "</tr>";
     }
-
     echo "</table>";
-    
 }
-
          }
 
-
 ?>
-
 <form action="" method="get">
 Imie:<input type="text" name="Imie"><br>
 Nazwisko:<input type="text" name="Nazwisko"><br>
